@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block content %}
+
+	<meta name = "viewport"; content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+<style type="text/css">
+    #googft-mapCanvas {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+</style>
+ <script type="text/javascript">
+     function initializemap2() {
+    google.maps.visualRefresh = true;
+    var isMobile = (navigator.userAgent.toLowerCase().indexOf('android') > -1) ||
+      (navigator.userAgent.match(/(iPod|iPhone|iPad|BlackBerry|Windows Phone|iemobile)/));
+    if (isMobile) {
+      var viewport = document.querySelector("meta[name=viewport]");
+      viewport.setAttribute('content', 'initial-scale=1.0, user-scalable=no');
+    }
+    var mapDiv = document.getElementById('googft-mapCanvas2');
+    mapDiv.style.width = isMobile ? '100%' : '100%';
+    mapDiv.style.height = isMobile ? '100%' : '100%';
+    var map2 = new google.maps.Map(mapDiv, {
+      center: new google.maps.LatLng(1.354887, 103.808947),
+      zoom: 12,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      scrollwheel: false
+    });
+    map2.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(document.getElementById('googft-legend-open'));
+    map2.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(document.getElementById('googft-legend'));
+
+    layer = new google.maps.FusionTablesLayer({
+      map: map2,
+      heatmap: { enabled: false },
+      query: {
+        select: "col2\x3e\x3e1",
+        from: "1pGVW_tD_4nwoMYukpDrf5kib2WgyIoLB7lb-Lfr_",
+        where: ""
+      },
+      options: {
+        styleId: 2,
+        templateId: 2
+      }
+    });
+
+    if (isMobile) {
+      var legend = document.getElementById('googft-legend');
+      var legendOpenButton = document.getElementById('googft-legend-open');
+      var legendCloseButton = document.getElementById('googft-legend-close');
+      legend.style.display = 'none';
+      legendOpenButton.style.display = 'block';
+      legendCloseButton.style.display = 'block';
+      legendOpenButton.onclick = function() {
+        legend.style.display = 'block';
+        legendOpenButton.style.display = 'none';
+      }
+      legendCloseButton.onclick = function() {
+        legend.style.display = 'none';
+        legendOpenButton.style.display = 'block';
+      }
+    }
+  }
+  google.maps.event.addDomListener(window, 'load', initializemap2);
+  </script>
+
+
+
+     <div id="googft-mapCanvas2"> </div>
+     <div class="carousel-caption" style="font-size: 20px;
+    background-color: rgba(0,0,0,0.4) ;"> Haze Map
+     <a href="/homepage" class="map-switch">Go to Crisis Map</a>
+   </div>
+
+{% endblock content %}

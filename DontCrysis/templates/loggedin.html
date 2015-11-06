@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="form-wrapper">
+    <h3 class="table-header"> On-going Incidents</h3>
+    <a class="create-button" href="/crisis/create">Create New</a>
+    <div class="table-wrapper">
+    <table>
+  <tr class="headrow">
+      <th></th>
+      <th> Title </th>
+      <th> Postal Code </th>
+      <th> Level </th>
+      <th> Reported By</th>
+      <th> Date </th>
+      <th> Time </th>
+      <th></th>
+      <th></th>
+      <th></th>
+      </tr>
+      {% for item in crises %}
+       <tr>
+       <td>{% if item.isActive %}
+         <p id="exclaim"> ! </p>
+       {% else %}
+       <p id="safe">&#10004;</p>{% endif %}</td>
+       <td> {{ item.title }} </td>
+       <td> {{ item.postalcode }}</td>
+       <td> {{ item.severity }}</td>
+       <td> {{item.personName }}</td>
+       <td> {{ item.date }}</td>
+       <td> {{ item.time }}</td>
+       <td>
+           <a class="options" href="{% url "crisis_edit" item.id %}"> Edit </a>
+           <a class="options" href="{% url "crisis_delete" item.id %}"> Delete </a>
+           {% if item.isActive %}
+             <a class="options" href= "{% url "crisis_toggle_active" item.id %}">Deactivate</a>
+           {% else %}
+             <a class="options" href="{% url "crisis_toggle_active" item.id %}">Activate</a>
+           {% endif %}
+
+       </td>
+       </tr>
+          {% endfor %}
+    </table>
+    </div>
+          <h3 class="table-header"> Reports Receivers </h3>
+     <a class="create-button" href="/user/addreportreceiver">Add Report Receiver</a>
+    <div class=""table-wrapper">
+          <table>
+          <tr class="headrow">
+              <th> Name </th>
+              <th> Email</th>
+              </tr>
+              {% for i in reports %}
+                <tr>
+                <td> {{ i.name }} </td>
+                <td> {{ i.email }}</td>
+                </tr>
+            {% endfor %}
+     </table>
+    </div>
+    </div>
+{% endblock %}

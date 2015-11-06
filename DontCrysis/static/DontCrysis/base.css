@@ -1,0 +1,135 @@
+html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+}
+
+body{
+        font-family: 'Ubuntu', serif;
+}
+
+.header{
+	background-color: #1589FF;
+}
+
+h1#title{
+	color: white;
+}
+
+#buttons{
+	margin-top: 20px;
+}
+
+a{
+	text-decoration: none;
+}
+
+a:hover{
+    text-decoration: none;
+    color: white;
+}
+
+#map {
+      	height: 100%;
+}
+
+ul
+{
+    list-style-type: none;
+}
+
+label{
+    padding : 15px;
+    width: 10%;
+    text-align: right;
+}
+
+input{
+    margin-left: 10px;
+}
+
+input[type=submit]{
+    border: none;
+    background-color: limegreen;
+    color: white;
+    float: right;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.form-wrapper{
+    padding: 5%;
+    background-color: ghostwhite;
+}
+
+.errorlist{
+    color: red;
+    text-size: 10px;
+}
+
+.list{
+    background-color: ivory;
+}
+
+table{
+    background-color: aliceblue;
+    align-items: center;
+}
+
+.table-wrapper{
+    overflow-y: scroll;
+    height: 200px;
+}
+
+td,th{
+   padding: 5px;
+}
+
+#exclaim{
+    color: red;
+}
+
+#safe{
+    color: limegreen;
+}
+
+.headrow{
+    font-weight: bold;
+    background-color: #1589FF;
+    color: white;
+}
+
+.create-button{
+    background-color: limegreen;
+    border-radius: 10px;
+    color: white;
+    padding: 1%;
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.table-header{
+    display: inline-block;
+    padding-right: 5px;
+}
+
+.options{
+    margin: 5px;
+    color: black;
+    background-color: lightsteelblue;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.map-switch{
+    font-size: 15px;
+    color: white;
+    background-color: rgba(0,0,0,0.5) ;
+    text-align: right;
+    border-radius: 4px;
+    padding: 5px;
+    marging-left: 10px;
+}

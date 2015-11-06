@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class = "form-wrapper">
+    <h1>Event Added!</h1>
+    <h3>Inform Respective Agencies:</h3>
+    {% for item in agency %}
+       <ul class = "list">
+        <li>Name: {{ item.name }}</li>
+        <li>Telephone: {{ item.telephone }}</li>
+        <li>Email: {{ item.email }}</li>
+        <li>Address: {{ item.address }}</li>
+       </ul>
+    {% endfor %}
+  </div>
+    <a class="create-button" href = "/loggedin"> Back </a>
+{% endblock %}

@@ -1,0 +1,27 @@
+<html>
+<head>
+    {% load staticfiles %}
+	<title>Dont Crysis - {% block title %}{% endblock %}</title>
+	<link rel="icon" href="{% static 'DontCrysis/images/logo_crysis.ico' %}" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu">
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false&amp;v=3"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'DontCrysis/base.css' %}" />
+
+</head>
+<body>
+   <div class="row header">
+	<div class="col-md-10 col-xs-8">
+		<img src="{% static 'DontCrysis/images/logo_crysis.png' %}" style="float:left; width:70px;">
+		<a href="/homepage"><h1 id="title">Don't Crysis</h1></a>
+	</div>
+	<div class="col-md-2 col-xs-4" id="buttons">
+		<a class="btn btn-primary" href="/subscribe">Subscribe</a>
+		<a class="btn btn-default" href="/login">Login</a>
+	</div>
+   </div>
+{% block content %}{% endblock content %}
+</body>
+</html>
