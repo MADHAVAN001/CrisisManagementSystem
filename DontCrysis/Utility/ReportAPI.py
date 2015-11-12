@@ -53,6 +53,6 @@ def generate():
                        ]))
     c = canvas.Canvas("crisis_report.pdf", pagesize=A4)
     table.wrapOn(c, width, height)
-    table.drawOn(c, *coord(1.5, 3.5, cm))
+    table.drawOn(c, *coord(1, 15, cm))
     c.save()
 generate()

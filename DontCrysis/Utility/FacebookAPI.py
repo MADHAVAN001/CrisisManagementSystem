@@ -5,9 +5,9 @@ import urllib
 import urlparse
 import subprocess
 __author__ = 'Madhavan'
-#def main():
-#  message = "This is a test Post from Thunder Groudon 1323"
-#  FacebookAPI(message)
+def main():
+  message = "My Post as an admin."
+  FacebookAPI(message)
 
 def FacebookAPI(message):
     app_id = ""
@@ -48,5 +48,5 @@ def get_api(cfg):
   graph = facebook.GraphAPI(page_access_token)
   return graph
 
-#if __name__ == "__main__":
-#  main()
+if __name__ == "__main__":
+  main()

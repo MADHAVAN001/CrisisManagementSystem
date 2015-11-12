@@ -18,8 +18,8 @@ class FacebookController(threading.Thread):
         for item in agency:
             agency_info = agency_info + "Name : " + item.name + ",\tContact : " + item.telephone + "\n"
 
-        message = "An alert for " + crisis.title + " in your area was reported at " + str(crisis.time) + \
-                   ". The description provided by the reporter is as follows : \'" + crisis.description + "\'. \nThis email is to notify " \
+        message = "An alert for \'" + crisis.title + "\' was reported in the area with postal code " + crisis.postalcode + " at " + str(crisis.time) + \
+                   ". The description provided by the reporter is as follows : \'" + crisis.description + "\'. \nThis post is to notify " \
                 "you of the situation. Please contact the following agencies in case you require any assitance : \n\n" + agency_info \
                    + "\n\n The relevant emergency personnel has been dispatched to take control of the situation. \n\nTake Care."
         FacebookAPI(message)
