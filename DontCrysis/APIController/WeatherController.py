@@ -15,8 +15,13 @@ class WeatherController(threading.Thread):
             weather_readings = check_weather()
             print weather_readings
 
+<<<<<<< HEAD
 #weather_thread = WeatherController()
 
+=======
+
+
+>>>>>>> 82af89de859962f9a0621c6de54d286a5cc835a4
 #weather_thread.start() # This actually causes the thread to run
 #weather_thread.join()  # This waits until the thread has completed
 # At this point, both threads have completed
