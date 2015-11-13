@@ -65,6 +65,18 @@
     background-color: rgba(0,0,0,0.4) ;"> Crisis Map
        <a href="/homepage/map2" class="map-switch">Go to Haze Map</a>
    </div>
+    <div class="weather-info" style="font-size: 12px;
+    position: absolute;
+    top: 70px;
+    left: 0px;
+    color: white;
+    height: 120px;
+    background-color: rgba(0,0,0,0.5) ;">
+           <b>Temperature:</b> <i>{{ weather.0}}</i><br/>
+           <b>Forecast:</b> <i>{{ weather.1 }}</i><br/>
+           <b>Humidity:</b><i>{{ weather.5 }}</i><br/>
+           <b>Message:</b><i>{{ weather.6}}</i><br/>
+       </div>
 
 
 {% endblock content %}

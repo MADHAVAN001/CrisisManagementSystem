@@ -13,10 +13,18 @@ import ctypes
 from DontCrysis.Utility.SmsAPI import sendsms
 from DontCrysis.APIController.EmailController import EmailController
 from DontCrysis.APIController.FacebookController import FacebookController
+from DontCrysis.APIController.HazeController import HazeController
+from DontCrysis.APIController.WeatherController import WeatherController
+from DontCrysis.Utility.WeatherAPI import check_weather
 # Create your views here.
 
 def homepage(request):
-    return render(request,'homepage.html')
+    weather_thread = WeatherController()
+    haze_thread = HazeController()
+    weather_thread.start()
+    haze_thread.start()
+    weather = check_weather()
+    return render_to_response('homepage.html', {'weather': weather})
 
 def homepage_map2(request):
     return render(request,'homepagemap2.html')

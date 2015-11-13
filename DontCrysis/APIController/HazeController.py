@@ -45,7 +45,7 @@ class HazeController(threading.Thread):
             if(haze_table[key] > 300):
                 self.HazeAlert(haze_table[key],key)
 
-haze_thread = HazeController()
-haze_thread.start() # This actually causes the thread to run
-haze_thread.join()  # This waits until the thread has completed
+#haze_thread = HazeController()
+#haze_thread.start() # This actually causes the thread to run
+#haze_thread.join()  # This waits until the thread has completed
 # At this point, both threads have completed
