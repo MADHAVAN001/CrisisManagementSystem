@@ -31,7 +31,6 @@
        <td> {{ item.time }}</td>
        <td>
            <a class="options" href="{% url "crisis_edit" item.id %}"> Edit </a>
-           <a class="options" href="{% url "crisis_delete" item.id %}"> Delete </a>
            {% if item.isActive %}
              <a class="options" href= "{% url "crisis_toggle_active" item.id %}">Deactivate</a>
            {% else %}

@@ -3,18 +3,13 @@ from models import Subscriber
 from models import Crisis
 from models import ReportReceiver
 
-TYPE=(
-    (1, 'FIRE' ),
-    (2, 'FLOOD'),
-    (3, 'MEDICAL EMERGENCY'),
-    (4, 'INDUSTRIAL ACCIDENT'),
-    (5, 'THUNDERSTORM'),
-    (6, 'VOLCANIC ERUPTION'),
-    (7, 'TSUNAMI'),
-    (8, 'TORNADO/HURRICANE'),
-    (9, 'EARTHQUAKE'),
-    (10, 'OTHERS')
-)
+TYPE=((1, 'FIRE' ),
+                    (2, 'FLOOD'),
+                    (3, 'MEDICAL EMERGENCY'),
+                    (4, 'INDUSTRIAL ACCIDENT'),
+                    (5, 'BAD WEATHER'),
+                    (6, 'OTHERS')
+                )
 SEVERITY =(
     (1, 'EXTREMELY URGENT'),
     (2, 'VERY URGENT'),
@@ -41,8 +36,8 @@ class ReportReceiverForm(forms.ModelForm):
         fields = "__all__"
 
 class CrisisForm(forms.ModelForm):
-    type = forms.ChoiceField(choices=TYPE, required=True )
+    #type = forms.ChoiceField(choices=TYPE, required=True )
     severity = forms.ChoiceField(choices=SEVERITY, required=True )
     class Meta:
         model = Crisis
-        fields = ['description','postalcode', 'severity' ]
+        fields = ['description', 'severity' ]

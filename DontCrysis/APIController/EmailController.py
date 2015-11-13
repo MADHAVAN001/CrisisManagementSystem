@@ -12,7 +12,7 @@ class EmailController(threading.Thread):
         self.id = id
         self.type = type
 
-    def run(self):
+    def run(task):
         #crisis_id = request.session.get('id')
         #crisis_type = request.session.get('type')
         crisis = Crisis.objects.get(id = self.id)

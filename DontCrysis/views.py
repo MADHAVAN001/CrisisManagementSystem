@@ -13,9 +13,27 @@ import ctypes
 from DontCrysis.Utility.SmsAPI import sendsms
 from DontCrysis.APIController.EmailController import EmailController
 from DontCrysis.APIController.FacebookController import FacebookController
+from DontCrysis.APIController.HazeController import HazeController
+from DontCrysis.APIController.WeatherController import WeatherController
+import DontCrysis.Utility.FusionTable
+from DontCrysis.APIController.ReportController import ReportController
 # Create your views here.
 
+TYPE={  1: 'FIRE' ,
+        2: 'FLOOD',
+        3: 'MEDICAL EMERGENCY',
+        4: 'INDUSTRIAL ACCIDENT',
+        5: 'BAD WEATHER',
+        6: 'OTHERS'
+     }
+
 def homepage(request):
+    haze_thread = HazeController()
+    weather_thread = WeatherController()
+    report_thread = ReportController()
+    haze_thread.start()
+    weather_thread.start()
+    report_thread.start()
     return render(request,'homepage.html')
 
 def homepage_map2(request):
@@ -121,6 +139,8 @@ def crisis_create(request):
             crisis.date = datetime.date.today()
             crisis.time = datetime.datetime.now().time()
             crisis.save()
+            type = crisis.type
+            DontCrysis.Utility.FusionTable.insert(str(TYPE.get(type)),crisis.postalcode)
             sendsms(request,crisis)
             email_thread = EmailController(crisis.id,crisis.type)
             facebook_thread = FacebookController(crisis.id,crisis.type)
@@ -171,8 +191,10 @@ def crisis_toggle_active(request, pk, template_name='loggedin.html'):
     crisis = get_object_or_404(Crisis, pk=pk)
     if crisis.isActive:
             crisis.isActive = 0
+            DontCrysis.Utility.FusionTable.delete(str(TYPE.get(crisis.type)),crisis.postalcode)
     else:
             crisis.isActive = 1
+            DontCrysis.Utility.FusionTable.insert(str(TYPE.get(crisis.type)),crisis.postalcode)
     crisis.save()
     return redirect('/loggedin')
 

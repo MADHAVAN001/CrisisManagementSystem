@@ -10,28 +10,38 @@ def return_weather_data():
     json_urlopener = urllib2.urlopen(singapore_weather_url)
     data = json.load(json_urlopener)
     data_current_observation=data['current_observation']
-    temp_c=int(data_current_observation['temp_c'])
+    temp_c=data_current_observation['temp_c']
     weather_condition=data_current_observation['weather']
     relative_humidity=data_current_observation['relative_humidity']
-    visibility_km=float(data_current_observation['visibility_km'])
-    precip_1hr_in=float(data_current_observation['precip_1hr_in'])
-    wind_kph=float(data_current_observation['wind_kph'])
-    uv_index=int(data_current_observation['UV'])
+    visibility_km=data_current_observation['visibility_km']
+    precip_1hr_in=data_current_observation['precip_1hr_in']
+    wind_kph=data_current_observation['wind_kph']
+    uv_index=data_current_observation['UV']
+
     if temp_c=='':
         temp_c='NA'
+    else:
+        temp_c=int(temp_c)
     if weather_condition=='':
         weather_condition='NA'
     if relative_humidity=='':
         relative_humidity='NA'
     if visibility_km=='':
         visibility_km='NA'
+    else:
+        visibility_km=float(visibility_km)
     if wind_kph=='':
         wind_kph='NA'
+    else:
+        wind_kph=float(wind_kph)
     if precip_1hr_in=='':
         precip_1hr_in='NA'
+    else:
+        precip_1hr_in=float(precip_1hr_in)
     if uv_index=='':
         uv_index='NA'
-
+    else:
+        uv_index=int(uv_index)
     data={'temp_c':temp_c, 'weather_condition':weather_condition,
           'relative_humidity':relative_humidity, 'visibility_km':visibility_km, 'wind_kph':wind_kph,
           'precip_1hr_in': precip_1hr_in, 'UV':uv_index}
@@ -41,6 +51,7 @@ def return_weather_data():
 def check_weather():
     weather_data = return_weather_data()
     #print weather_data
+    print weather_data
     report_weather=[]
     #Temperature Status
     if((weather_data['temp_c']>=45)):

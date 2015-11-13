@@ -4,6 +4,7 @@ import threading
 import time
 from DontCrysis.Utility.ReportAPI import generate
 from DontCrysis.Utility.ReportSend import GmailAPI
+from DontCrysis.models import ReportReceiver
 
 class ReportController(threading.Thread):
      def __init__(self):
@@ -18,14 +19,9 @@ class ReportController(threading.Thread):
                       " We will continue to send you updates on all matters requiring your assisstance. \n" \
                       "\n \nThanks & Regards,\nDontCrysis Team"
             subject = "[DontCrysis] Routine Update"
-            GmailAPI(subject,message,"madhavan001@e.ntu.edu.sg")
+
+            report_receivers = ReportReceiver.objects.all()
+            for item in report_receivers:
+                GmailAPI(subject,message,item.email)
 
 
-def main():
-    report_thread = ReportController()
-    report_thread.start() # This actually causes the thread to run
-    report_thread.join()  # This waits until the thread has completed
-    # At this point, both threads have completed
-
-if __name__ == "__main__":
-    main()

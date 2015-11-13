@@ -2,18 +2,13 @@ from django.db import models
 import os
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "CrisisManagementSystem.settings")
 
-TYPE=(
-    (1, 'FIRE' ),
-    (2, 'FLOOD'),
-    (3, 'MEDICAL EMERGENCY'),
-    (4, 'INDUSTRIAL ACCIDENT'),
-    (5, 'THUNDERSTORM'),
-    (6, 'VOLCANIC ERUPTION'),
-    (7, 'TSUNAMI'),
-    (8, 'TORNADO/HURRICANE'),
-    (9, 'EARTHQUAKE'),
-    (10, 'OTHERS')
-)
+TYPE=((1, 'FIRE' ),
+                    (2, 'FLOOD'),
+                    (3, 'MEDICAL EMERGENCY'),
+                    (4, 'INDUSTRIAL ACCIDENT'),
+                    (5, 'BAD WEATHER'),
+                    (6, 'OTHERS')
+                )
 SEVERITY =(
     (1, 'EXTREMELY URGENT'),
     (2, 'VERY URGENT'),

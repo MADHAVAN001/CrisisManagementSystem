@@ -17,7 +17,9 @@ def sendsms(request,crisis):
     elif(crisis.type==4):
         num = '+6594203032'
         message = 'There is a gas leak at pincode: %s with severity %d' %(crisis.postalcode, crisis.severity)
+    else:
+        num="+6591213809"
+        message = 'There is '+ crisis.title +' at pincode: %s with severity %d' %(crisis.postalcode, crisis.severity)
 
-    client.messages.create(body=message,
-    to=num,
-    from_="+13345813034",)
+
+    client.messages.create(body=message,to=num, from_="+13345813034",)
