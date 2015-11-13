@@ -15,12 +15,9 @@ from DontCrysis.APIController.EmailController import EmailController
 from DontCrysis.APIController.FacebookController import FacebookController
 from DontCrysis.APIController.HazeController import HazeController
 from DontCrysis.APIController.WeatherController import WeatherController
-<<<<<<< HEAD
 import DontCrysis.Utility.FusionTable
 from DontCrysis.APIController.ReportController import ReportController
-=======
 from DontCrysis.Utility.WeatherAPI import check_weather
->>>>>>> 82af89de859962f9a0621c6de54d286a5cc835a4
 # Create your views here.
 
 TYPE={  1: 'FIRE' ,
@@ -32,7 +29,6 @@ TYPE={  1: 'FIRE' ,
      }
 
 def homepage(request):
-<<<<<<< HEAD
     haze_thread = HazeController()
     weather_thread = WeatherController()
     report_thread = ReportController()
@@ -40,14 +36,12 @@ def homepage(request):
     weather_thread.start()
     report_thread.start()
     return render(request,'homepage.html')
-=======
     weather_thread = WeatherController()
     haze_thread = HazeController()
     weather_thread.start()
     haze_thread.start()
     weather = check_weather()
     return render_to_response('homepage.html', {'weather': weather})
->>>>>>> 82af89de859962f9a0621c6de54d286a5cc835a4
 
 def homepage_map2(request):
     return render(request,'homepagemap2.html')
